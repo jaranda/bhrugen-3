@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace SparkAuto.Migrations
+namespace SparkAuto.Data.Migrations
 {
-    public partial class CreateDatabase : Migration
+    public partial class RecreateDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -44,6 +44,20 @@ namespace SparkAuto.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ServiceType",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(nullable: false),
+                    Price = table.Column<double>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ServiceType", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -206,6 +220,9 @@ namespace SparkAuto.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "ServiceType");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

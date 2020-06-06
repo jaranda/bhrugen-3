@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SparkAuto.Data;
 
-namespace SparkAuto.Migrations
+namespace SparkAuto.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200602151435_CreateDatabase")]
-    partial class CreateDatabase
+    [Migration("20200606220517_RecreateDB")]
+    partial class RecreateDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -212,6 +212,24 @@ namespace SparkAuto.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("SparkAuto.Models.ServiceType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("REAL");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ServiceType");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

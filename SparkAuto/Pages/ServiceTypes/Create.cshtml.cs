@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Serialization;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -13,6 +12,7 @@ namespace SparkAuto.Pages.ServiceTypes
     public class CreateModel : PageModel
     {
         private readonly ApplicationDbContext _db;
+
         [BindProperty]  // On Post() if this object is found it will automatically pass it and assign values to your Post handlers.
         public ServiceType ServiceType { get; set; }
 
